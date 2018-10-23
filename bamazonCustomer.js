@@ -44,7 +44,7 @@ function orderPrompt(){
             if (isNaN(value) === false) {
                 return true;
             } else {
-                console.log(`Please enter a number.`);
+                console.log(" Please enter a number!");
                 return false;
             }
         }
@@ -58,7 +58,7 @@ function orderPrompt(){
             if (isNaN(value) === false) {
                 return true;
             } else {
-                console.log(`Please enter a number.`);
+                console.log(" Please enter a number!");
                 return false;
             }
         }
@@ -71,7 +71,7 @@ function orderPrompt(){
             var total = orderQuantity * price;
             if (err) throw err;
             if(stockQuantity < orderQuantity){
-                console.log(`Sorry!  We only have ${stockQuantity} of that item in stock.  Please enter a lower quantity.`);
+                console.log(`\nSorry!  We only have ${stockQuantity} of that item in stock.  Please enter a lower quantity.\n`);
                 orderPrompt();
             }
             else {
