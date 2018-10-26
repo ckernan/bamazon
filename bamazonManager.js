@@ -3,6 +3,8 @@ require("dotenv").config();
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 const Table = require("cli-table");
+const chalk = require('chalk');
+
 
 let connection = mysql.createConnection({
     host: "localhost",
@@ -14,7 +16,7 @@ let connection = mysql.createConnection({
 
 connection.connect(function(err){
     if (err) throw err;
-    console.log("\n-----WELCOME, MANAGER!-----\n");
+    console.log(chalk.hex("#a5038d")("\n-----WELCOME, MANAGER!-----\n"));
     managerPrompt();
 });
 
@@ -138,7 +140,7 @@ function addInventory(){
                 }
             ],function(error){
                 if (error) throw error;
-                console.log(`\nThe quantity for ${product} has been increased to ${newQuantity}\n`);
+                console.log(chalk.hex("#a5038d")(`\nThe quantity for ${product} has been increased to ${newQuantity}\n`));
                 nextAction();
             })
           })
@@ -165,7 +167,7 @@ function newProduct(){
             if (isNaN(value) === false){
                 return true;
             } else {
-                console.log(" Please enter a number!");
+                console.log(chalk.hex("#a5038d")(" Please enter a number!"));
                 return false;
             }
         }
@@ -178,7 +180,7 @@ function newProduct(){
             if(isNaN(value) === false){
                 return true;
             } else {
-                console.log(" Please enter a number!");
+                console.log(chalk.hex("#a5038d")(" Please enter a number!"));
                 return false;
             }
         }
@@ -192,7 +194,7 @@ function newProduct(){
         },
         function(err){
             if(err) throw err;
-            console.log(`\nYou have successfully added ${answer.product} to your inventory!\n`);
+            console.log(chalk.hex("#a5038d")(`\nYou have successfully added ${answer.product} to your inventory!\n`));
             nextAction();
         })
     })
@@ -210,7 +212,7 @@ function nextAction(){
             managerPrompt();
         }
         else {
-            console.log("\nThanks for all your hard work!  See you next time!\n");
+            console.log(chalk.hex("#a5038d")("\nThanks for all your hard work!  See you next time!\n"));
             connection.end();
         }
     })

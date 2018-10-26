@@ -4,6 +4,7 @@ const mysql = require ("mysql");
 const inquirer = require("inquirer");
 const Table = require("cli-table");
 const cTable = require("console.table");
+const chalk = require('chalk');
 
 
 let connection = mysql.createConnection({
@@ -16,7 +17,7 @@ let connection = mysql.createConnection({
 
 connection.connect(function(err){
     if (err) throw err;
-    console.log("\n-----WELCOME, SUPERVISOR!-----\n");
+    console.log(chalk.hex("#0330a3")("\n-----WELCOME, SUPERVISOR!-----\n"));
     supervisorPrompt();
 });
 
@@ -29,7 +30,7 @@ function supervisorPrompt() {
     }).then(function(answer){
         switch(answer.action){
             case "View product sales by department":
-            console.log("working")
+            // console.log("working")
             viewSales();
             break;
 
@@ -67,7 +68,7 @@ function newDept(){
             if(isNaN(value) === false){
                 return true;
             } else {
-                console.log(" Please enter a number!");
+                console.log(chalk.hex("#0330a3")(" Please enter a number!"));
                 return false;
             }
         }
@@ -75,10 +76,14 @@ function newDept(){
         connection.query("INSERT INTO departments SET ?", 
         {
             department_name: answer.name,
-            over_head_costs: answer.over_head_costs
+            over_head_costs: answer.cost
+        });
+        connection.query("INSERT INTO products SET ?", 
+        {
+            department_name: answer.name,
         },
         function(err){
-            console.log(`\nYou have successfully added ${answer.name} with an overhead cost of $${answer.cost} to your departments!\n`);
+            console.log(chalk.hex("#0330a3")(`\nYou have successfully added ${answer.name} with an overhead cost of $${answer.cost} to your departments!\n`));
             nextAction();
         })
     })
@@ -96,7 +101,7 @@ function nextAction(){
             supervisorPrompt();
         }
         else {
-            console.log("\nThanks for all your hard work!  See you next time!\n");
+            console.log(chalk.hex("#0330a3")("\nThanks for all your hard work!  See you next time!\n"));
             connection.end();
         }
     });

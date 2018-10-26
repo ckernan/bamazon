@@ -3,6 +3,8 @@ require("dotenv").config();
 const mysql = require ("mysql");
 const inquirer = require("inquirer");
 const Table = require("cli-table");
+const chalk = require('chalk');
+
 
 let connection = mysql.createConnection({
     host: "localhost",
@@ -29,7 +31,7 @@ function showProducts(){
             )
             
         }
-        console.log("\n-----WELCOME TO CRISTINA'S BAMAZON STORE!-----\n");
+        console.log(chalk.hex("#4a06a8")("\n-----WELCOME TO CRISTINA'S BAMAZON STORE!-----\n"));
         console.log(table.toString() + "\n");
         orderPrompt();
     });
@@ -46,7 +48,7 @@ function orderPrompt(){
             if (isNaN(value) === false) {
                 return true;
             } else {
-                console.log(" Please enter a number!");
+                console.log(chalk.hex("#4a06a8")(" Please enter a number!"));
                 return false;
             }
         }
@@ -60,7 +62,7 @@ function orderPrompt(){
             if (isNaN(value) === false) {
                 return true;
             } else {
-                console.log(" Please enter a number!");
+                console.log(chalk.hex("#4a06a8")(" Please enter a number!"));
                 return false;
             }
         }
@@ -74,7 +76,7 @@ function orderPrompt(){
             var productSales = results[0].product_sales
             if (err) throw err;
             if(stockQuantity < orderQuantity){
-                console.log(`\nSorry!  We only have ${stockQuantity} of that item in stock.  Please enter a lower quantity.\n`);
+                console.log(chalk.hex("#4a06a8")(`\nSorry!  We only have ${stockQuantity} of that item in stock.  Please enter a lower quantity.\n`));
                 orderPrompt();
             }
             else {
@@ -93,10 +95,10 @@ function orderPrompt(){
                     function(err){
                         if(err) throw err;
                         if(orderQuantity == 1){
-                            console.log(`\nYou purchased ${orderQuantity} ${results[0].product_name} for a total of $${total}.  Thank you for your order!\n`);
+                            console.log(chalk.hex("#4a06a8")(`\nYou purchased ${orderQuantity} ${results[0].product_name} for a total of $${total}.  Thank you for your order!\n`));
                         }
                         else {
-                            console.log(`\nYou purchased ${orderQuantity} ${results[0].product_name}s for a total of $${total}.  Thank you for your order!\n`)
+                            console.log(chalk.hex("#4a06a8")(`\nYou purchased ${orderQuantity} ${results[0].product_name}s for a total of $${total}.  Thank you for your order!\n`))
 
                         }
 
@@ -121,7 +123,7 @@ function nextAction(){
                 break;
             
             case "Exit":
-                console.log("\nThank you for shopping with us!!\n");
+                console.log(chalk.hex("#4a06a8")("\nThank you for shopping with us!!\n"));
                 connection.end();
         }
 
