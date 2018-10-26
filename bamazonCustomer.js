@@ -71,6 +71,7 @@ function orderPrompt(){
             var stockQuantity = results[0].stock_quantity;
             var price = results[0].price;
             var total = orderQuantity * price;
+            var productSales = results[0].product_sales
             if (err) throw err;
             if(stockQuantity < orderQuantity){
                 console.log(`\nSorry!  We only have ${stockQuantity} of that item in stock.  Please enter a lower quantity.\n`);
@@ -81,7 +82,9 @@ function orderPrompt(){
                     "UPDATE products SET ? WHERE ?", 
                     [
                         {
-                            stock_quantity: stockQuantity - orderQuantity
+                            stock_quantity: stockQuantity - orderQuantity,
+                            product_sales: productSales + total
+
                         }, 
                         {
                             item_id: id
