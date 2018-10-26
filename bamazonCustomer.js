@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const mysql = require ("mysql");
 const inquirer = require("inquirer");
 const Table = require("cli-table");
@@ -6,7 +8,7 @@ let connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "l33thaxor",
+    password: process.env.mysqlPassword,
     database: "bamazon"
 });
 
