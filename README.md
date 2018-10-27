@@ -12,7 +12,7 @@ Bamazon is an Amazon-like storefront CLI app using MySQL and Node.js. It provide
 This option first displays all of the items available for sale.
 It then prompts the user to enter the ID and number of units of the product they would like to buy.
 
-![Bamazon Customer View 1](bamazon/images/CustomerView1.png)
+![Bamazon Customer View 1](https://github.com/ckernan/bamazon/blob/master/images/CustomerView1.png?raw=true)
 ![Bamazon Customer View 2](bamazon/images/CustomerView2.png)
 
 A video demo of the Customer View option can be found [here](https://drive.google.com/file/d/1aPuz_EKtq8BvnBg9Iyva45rWBTRtWSdd/view?usp=sharing).
