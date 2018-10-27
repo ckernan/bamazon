@@ -16,6 +16,7 @@ let connection = mysql.createConnection({
 
 connection.connect(function(err){
     if (err) throw err;
+    console.log(chalk.hex("#4a06a8")("\n-----WELCOME TO CRISTINA'S BAMAZON STORE!-----\n"));
     showProducts();
 });
 
@@ -31,7 +32,6 @@ function showProducts(){
             )
             
         }
-        console.log(chalk.hex("#4a06a8")("\n-----WELCOME TO CRISTINA'S BAMAZON STORE!-----\n"));
         console.log(table.toString() + "\n");
         orderPrompt();
     });
