@@ -85,7 +85,7 @@ function orderPrompt(){
                     [
                         {
                             stock_quantity: stockQuantity - orderQuantity,
-                            product_sales: productSales + total
+                            product_sales: productSales + total.toFixed(2)
 
                         }, 
                         {
@@ -95,10 +95,10 @@ function orderPrompt(){
                     function(err){
                         if(err) throw err;
                         if(orderQuantity == 1){
-                            console.log(chalk.hex("#4a06a8")(`\nYou purchased ${orderQuantity} ${results[0].product_name} for a total of $${total}.  Thank you for your order!\n`));
+                            console.log(chalk.hex("#4a06a8")(`\nYou purchased ${orderQuantity} ${results[0].product_name} for a total of $${total.toFixed(2)}.  Thank you for your order!\n`));
                         }
                         else {
-                            console.log(chalk.hex("#4a06a8")(`\nYou purchased ${orderQuantity} ${results[0].product_name}s for a total of $${total}.  Thank you for your order!\n`))
+                            console.log(chalk.hex("#4a06a8")(`\nYou purchased ${orderQuantity} ${results[0].product_name}s for a total of $${total.toFixed(2)}.  Thank you for your order!\n`))
 
                         }
 
