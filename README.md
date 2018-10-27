@@ -29,7 +29,7 @@ Selecting "View Products For Sale" will display a table of all the items availab
 
 Selecting "View Low Inventory" will list all the items with an inventory count lower than five.
 
-Selecting "Add to Inventory" will prompt the user to enter the ID and number of units of the item they would like to add inventory.
+Selecting "Add to Inventory" will prompt the user to enter the ID and number of units of the item they would like to add to inventory.
 
 Selecting "Add New Product" will prompt the user to enter the name, department, price and number of units of the new product they would like to add.
 
